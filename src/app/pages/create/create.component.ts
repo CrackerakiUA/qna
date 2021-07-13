@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { QuestionService } from 'src/app/services';
+import { Question, Categories } from 'src/app/core';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+	selector: 'app-create',
+	templateUrl: './create.component.html',
+	styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CreateComponent {
+	readonly categories = Categories
+	public question: Question = {
+		id: Date.now(),
+		text: '',
+		answers: [],
+		category: this.categories[0]
+	};
+	public answer: string = '';
+	constructor(public qs: QuestionService) {}
 }

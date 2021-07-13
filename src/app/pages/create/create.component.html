@@ -1,1 +1,20 @@
-<p>create works!</p>
+<form (ngSubmit)="qs.create(question)">
+	<input type="text" [(ngModel)]="question.text" name="text">
+	<label *ngFor="let category of categories">
+		<span>{{category|upper}}</span>
+		<input type="radio" [(ngModel)]="question.category" name="category" [value]="category">
+	</label>
+	<button [disabled]="!question.text || (question.category != 'open' &&  !question.answers.length)">Create Question</button>
+</form>
+
+<ng-container *ngIf="question.category != 'open'">
+	<h3>Answers</h3>
+	<div *ngFor="let answer of question.answers; index as i">
+		<span>{{answer}}</span>
+		<button (click)="question.answers.splice(i, 1);">Delete</button>
+	</div>
+	<form (ngSubmit)="question.answers.push(answer); answer='';">
+		<input type="text" [(ngModel)]="answer" name="answer">
+		<button [disabled]="!answer">Add Answer</button>
+	</form>
+</ng-container>

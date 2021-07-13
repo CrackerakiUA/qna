@@ -5,18 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class StoreService {
 	constructor(){}
-	set(hold, value){
+	set(hold: string, value: any){
 		try { localStorage.setItem('temp_storage_'+hold, JSON.stringify(value)); }
 		catch(e){}
 	}
-	get(hold, cb:any=()=>{}, errcb:any=()=>{}){
+	get(hold: string){
 		let doc = localStorage.getItem('temp_storage_'+hold);
-		cb(doc&&JSON.parse(doc)||null);
+		return doc && JSON.parse(doc) || null;
 	}
-	remove(hold, cb:any=()=>{}, errcb:any=()=>{}){
+	remove(hold: string){
 		localStorage.removeItem('temp_storage_'+hold);
-	}
-	clear(cb:any=()=>{}, errcb:any=()=>{}){
-		localStorage.clear();
 	}
 }
