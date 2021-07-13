@@ -1,9 +1,3 @@
-<!-- <div class="page">
-	<div class="page__header"></div>
-	<div class="page__body"></div>
-	<div class="page__header"></div>
-</div> -->
-
 <h2 class="title">Create Question</h2>
 <form class="create-form" (ngSubmit)="qs.create(question)">
     <label class="forms">
@@ -24,7 +18,7 @@
 </form>
 
 <ng-container *ngIf="question.category != 'open'">
-    <h3>Answers</h3>
+    <h4>Answers</h4>
     <form (ngSubmit)="question.answers.push(answer); answer='';">
         <label class="forms">
             <span class="forms__title">Answer Name</span>
