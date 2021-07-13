@@ -1,0 +1,21 @@
+@import 'angular';
+:host {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.list {
+	display: flex;
+	&__unanswered {
+		flex: 1 1 50%;
+		min-width: 50%;
+	}
+	&__answered {
+		flex: 1 1 50%;
+		min-width: 50%;
+	}
+	@include bp-max(md) {
+		flex-direction: column;
+	}
+}

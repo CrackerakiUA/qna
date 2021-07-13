@@ -1,4 +1,9 @@
 <h3>{{question.text}}</h3>
-<textarea [(ngModel)]="answer.text" [disabled]="!!answer.id"></textarea>
-<button *ngIf="!answer.id" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
-<button *ngIf="answer.id" (click)="qs.revoke(answer);">Revoke</button>
+<label class="forms">
+	<span class="forms__title">Your Answer</span>
+	<textarea class="forms__textarea" placeholder="Your text"  [(ngModel)]="answer.text" [disabled]="!!answer.id"></textarea>
+</label>
+<div>
+	<button class="btn _primary" *ngIf="!answer.id" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
+	<button class="btn _danger" *ngIf="answer.id" (click)="qs.revoke(answer);">Revoke</button>
+</div>

@@ -11,6 +11,7 @@
         &:not(:last-child) {
             margin-right: 6px;
         }
+
         &:hover {
             background: rgba($c-sky, 0.09);
         }
@@ -22,6 +23,7 @@
             margin-bottom: 4px;
             display: inline-block;
         }
+
     }
     &__input {
         display: none;
@@ -33,6 +35,7 @@
         &:checked+.checkbox__body .checkbox__svg svg {
             stroke-dashoffset: 0;
         }
+
     }
     &__svg {
         position: relative;
@@ -75,5 +78,13 @@
 @keyframes wave {
     50% {
         transform: scale(0.9);
+    }
+}
+
+.radio.disabled {
+    &:hover {
+        .radio__label:after {
+            background: none !important;
+        }
     }
 }

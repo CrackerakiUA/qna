@@ -1,13 +1,18 @@
-<h2>Unanswered</h2>
-<div *ngFor="let question of qs.questions|splice:{arr: qs.answered, prop: 'question_id'}:qs.now">
-	<single *ngIf="question.category === 'single'" [question]="question"></single>
-	<multiple *ngIf="question.category === 'multiple'" [question]="question"></multiple>
-	<open *ngIf="question.category === 'open'" [question]="question"></open>
-</div>
-
-<h2>Answered</h2>
-<div *ngFor="let question of qs.questions|splice:{arr: qs.answered, prop: 'question_id', keep: true}:qs.now">
-	<single *ngIf="question.category === 'single'" [question]="question"></single>
-	<multiple *ngIf="question.category === 'multiple'" [question]="question"></multiple>
-	<open *ngIf="question.category === 'open'" [question]="question"></open>	
+<div class="list">
+    <div class="list__unanswered">
+        <h2>Unanswered</h2>
+        <div *ngFor="let question of qs.questions|splice:{arr: qs.answered, prop: 'question_id'}:qs.now">
+            <single *ngIf="question.category === 'single'" [question]="question"></single>
+            <multiple *ngIf="question.category === 'multiple'" [question]="question"></multiple>
+            <open *ngIf="question.category === 'open'" [question]="question"></open>
+        </div>
+    </div>
+    <div class="list__answered">
+        <h2>Answered</h2>
+        <div *ngFor="let question of qs.questions|splice:{arr: qs.answered, prop: 'question_id', keep: true}:qs.now">
+            <single *ngIf="question.category === 'single'" [question]="question"></single>
+            <multiple *ngIf="question.category === 'multiple'" [question]="question"></multiple>
+            <open *ngIf="question.category === 'open'" [question]="question"></open>
+        </div>
+    </div>
 </div>

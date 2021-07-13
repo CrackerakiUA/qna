@@ -1,7 +1,8 @@
 <h3>{{question.text}}</h3>
-<div *ngFor="let text of question.answers" (click)="!answer.id && answer.text = text">
-	<span>{{text}}</span>
-	<input type="checkbox" [checked]="answer.text === text" [disabled]="!!answer.id">
-</div>
-<button *ngIf="!answer.id" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
-<button *ngIf="answer.id" (click)="qs.revoke(answer);">Revoke</button>
+<label class="radio" [class.disabled]="!!answer.id" *ngFor="let text of question.answers" (click)="!answer.id && answer.text = text">
+    <input type="radio" class="radio__input" name="answer" [checked]="answer.text === text" [disabled]="!!answer.id">
+    <span class="radio__label"></span>
+    <div class="radio__text">{{text}}</div>
+</label>
+<button *ngIf="!answer.id" class="btn _primary" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
+<button *ngIf="answer.id" class="btn _danger" (click)="qs.revoke(answer);">Revoke</button>
