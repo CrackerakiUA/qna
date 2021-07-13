@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuestionService } from 'src/app/services';
 
 @Component({
 	selector: 'app-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./list.component.scss']
 })
 export class ListComponent{
-	constructor() { }
+	constructor(public qs: QuestionService) {}
 }

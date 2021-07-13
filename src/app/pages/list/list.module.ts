@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core';
 import { ListComponent } from './list.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SingleComponent } from './single/single.component';
+import { MultipleComponent } from './multiple/multiple.component';
+import { OpenComponent } from './open/open.component';
 
 const routes: Routes = [{
 	path: '',
@@ -14,7 +17,10 @@ const routes: Routes = [{
 		CoreModule
 	],
 	declarations: [
-		ListComponent
+		ListComponent,
+  SingleComponent,
+  MultipleComponent,
+  OpenComponent
 	],
 	providers: []
 	

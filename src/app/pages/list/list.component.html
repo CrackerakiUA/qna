@@ -1,1 +1,11 @@
-<p>list works!</p>
+<div *ngFor="let question of qs.questions|splice:{arr: qs.answered, prop: 'question_id'}:qs.now">
+	<single *ngIf="question.category === 'single'" [question]="question"></single>
+	<multiple *ngIf="question.category === 'multiple'" [question]="question"></multiple>
+	<open *ngIf="question.category === 'open'" [question]="question"></open>
+</div>
+
+<div *ngFor="let question of qs.questions|splice:{arr: qs.answered, prop: 'question_id', keep: true}:qs.now">
+	<single *ngIf="question.category === 'single'" [question]="question"></single>
+	<multiple *ngIf="question.category === 'multiple'" [question]="question"></multiple>
+	<open *ngIf="question.category === 'open'" [question]="question"></open>	
+</div>
