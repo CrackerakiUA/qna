@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ArrPipe } from './pipes/arr.pipe';
 import { UpperPipe } from './pipes/upper.pipe';
 
 @NgModule({
 	declarations: [
-		ArrPipe,
 		UpperPipe
 	],
 	imports: [
@@ -16,8 +14,7 @@ import { UpperPipe } from './pipes/upper.pipe';
 	exports: [
 		CommonModule,
 		FormsModule,
-		UpperPipe,
-		ArrPipe
+		UpperPipe
 	]
 })
 export class CoreModule { }

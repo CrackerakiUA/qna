@@ -1,2 +1,2 @@
 export { CoreModule } from './core.module';
-export { Question, Categories } from './interfaces/question';
+export { Question, Categories, default_question } from './interfaces/question';
