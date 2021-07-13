@@ -1,1 +1,7 @@
-<p>single works!</p>
+<h3>{{question.text}}</h3>
+<div *ngFor="let text of question.answers" (click)="!answer.id && answer.text = text">
+	<span>{{text}}</span>
+	<input type="checkbox" [checked]="answer.text === text" [disabled]="!!answer.id">
+</div>
+<button *ngIf="!answer.id" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
+<button *ngIf="answer.id" (click)="qs.revoke(answer);">Revoke</button>

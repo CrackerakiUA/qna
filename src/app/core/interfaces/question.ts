@@ -8,7 +8,6 @@ export interface Question {
 export interface Answer {
 	id: number;
 	text: string;
-	answer: string;
 	question_id: number;
 }
 

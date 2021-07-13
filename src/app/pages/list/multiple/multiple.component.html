@@ -1,7 +1,7 @@
-<label *ngFor="let text of question.answers" (click)="answer.answer = text">
+<h3>{{question.text}}</h3>
+<label *ngFor="let text of question.answers">
 	<span>{{text}}</span>
-	<input type="checkbox" [checked]="answer.answer === text">
+	<input type="checkbox" [(ngModel)]="answers[text]" (ngModelChange)="change()" name="answer" [disabled]="!!answer.id">
 </label>
-
-<button *ngIf="!answer.id" [disabled]="!answer.answer" (click)="qs.answer(question, answer);">Answer</button>
-<button *ngIf="answer.id" (click)="answer.answer = ''; qs.update(question);">Revoke</button>
+<button *ngIf="!answer.id" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
+<button *ngIf="answer.id" (click)="qs.revoke(answer);">Revoke</button>

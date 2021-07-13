@@ -25,14 +25,6 @@ export class QuestionService {
 		}
 		return this.default_question;
 	}
-	public getAnswer(question_id: number):Answer {
-		for (let i = this.answered.length-1; i >= 0; i--){
-			if(this.answered[i].question_id === question_id){
-				return this.answered[i];
-			}
-		}
-		return JSON.parse(JSON.stringify(this.default_answer));
-	}
 	update(question: Question){
 		for (let i = this.questions.length-1; i >= 0; i--){
 			if(this.questions[i].id === question.id){
@@ -55,11 +47,28 @@ export class QuestionService {
 	refresh(){
 		this.now = new Date().getTime();
 	}
+	revoke(answer: Answer){
+		for (let i = this.answered.length-1; i >= 0; i--){
+		    if(this.answered[i].id == answer.id){
+		    	this.answered.splice(i, 1);
+		    }
+		}
+		answer.text = '';
+		this.store.set('answered', this.answered);
+		this.refresh();
+	}
+	public getAnswer(question_id: number):Answer {
+		for (let i = this.answered.length-1; i >= 0; i--){
+			if(this.answered[i].question_id === question_id){
+				return this.answered[i];
+			}
+		}
+		return JSON.parse(JSON.stringify(this.default_answer));
+	}
 	answer(question: Question, answer: Answer){
-		console.log(question);
-		console.log(answer);
-		if(!answer.id) answer.id = new Date().getTime();
-		
+		answer.id = new Date().getTime();		
+		answer.question_id = question.id;
+		this.answered.push(answer);
 		this.store.set('answered', this.answered);
 		this.refresh();
 	}

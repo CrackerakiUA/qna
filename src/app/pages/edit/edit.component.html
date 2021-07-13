@@ -22,7 +22,7 @@
     <form (ngSubmit)="question.answers.push(answer); answer='';">
 		<label class="forms">
             <span class="forms__title">Answer Name</span>
-            <input class="forms__input" type="text" placeholder="Your text" [(ngModel)]="answer" name="answer">
+            <input class="forms__input" type="text" placeholder="Your text" [(ngModel)]="answer" (ngModelChange)="answer = answer.split(',').join('')" name="answer">
         </label>
         <div class="text-center"><button class="btn _primary" [disabled]="!answer">Add Answer</button></div>
     </form>

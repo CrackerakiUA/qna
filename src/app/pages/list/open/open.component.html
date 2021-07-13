@@ -1,1 +1,4 @@
-<p>open works!</p>
+<h3>{{question.text}}</h3>
+<textarea [(ngModel)]="answer.text" [disabled]="!!answer.id"></textarea>
+<button *ngIf="!answer.id" [disabled]="!answer.text" (click)="qs.answer(question, answer);">Answer</button>
+<button *ngIf="answer.id" (click)="qs.revoke(answer);">Revoke</button>
