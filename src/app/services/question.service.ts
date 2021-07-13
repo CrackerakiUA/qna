@@ -12,7 +12,8 @@ export class QuestionService {
 		private router: Router){}
 	create(question: Question){
 		question.id = Date.now();
-		this.questions.push(question);
+		// this is sorting by newest, there is no case to sort questions in this array
+		this.questions.unshift(question);
 		this.store.set('questions', this.questions);
 		this.router.navigate(['/']);
 	}

@@ -1,1 +1,7 @@
-<p>manage works!</p>
+<div *ngFor="let question of qs.questions">
+	<span>{{question.text}}</span>
+	<span>{{question.category}}</span>
+	<span>{{question.id|date}}</span>
+	<a routerLink="/edit/{{question.id}}">Edit</a>
+	<button (click)="qs.delete(question)">Delete</button>
+</div>

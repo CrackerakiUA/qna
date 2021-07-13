@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuestionService } from 'src/app/services';
 
 @Component({
 	selector: 'app-manage',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./manage.component.scss']
 })
 export class ManageComponent{
-	constructor() { }
+	constructor(public qs: QuestionService) {}
 }
