@@ -25,10 +25,6 @@
 
 <ng-container *ngIf="question.category != 'open'">
     <h3>Answers</h3>
-    <div *ngFor="let answer of question.answers; index as i">
-        <span>{{answer}}</span>
-        <button (click)="question.answers.splice(i, 1);">Delete</button>
-    </div>
     <form (ngSubmit)="question.answers.push(answer); answer='';">
         <label class="forms">
             <span class="forms__title">Answer Name</span>
@@ -36,4 +32,8 @@
         </label>
        <div class="text-center"> <button class="btn _primary" [disabled]="!answer">Add Answer</button></div>
     </form>
+	<div class="answer" *ngFor="let answer of question.answers; index as i">
+        <span>{{answer}}</span>
+		<span  (click)="question.answers.splice(i, 1);" class="material-icons">delete</span>
+    </div>
 </ng-container>

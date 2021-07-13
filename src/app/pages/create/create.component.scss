@@ -58,3 +58,10 @@
 .text-center {
     text-align: center;
 }
+
+.answer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	word-break: break-word;
+}

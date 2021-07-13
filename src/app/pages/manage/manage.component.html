@@ -1,7 +1,25 @@
-<div *ngFor="let question of qs.questions">
-	<span>{{question.text}}</span>
-	<span>{{question.category}}</span>
-	<span>{{question.id|date}}</span>
-	<a routerLink="/edit/{{question.id}}">Edit</a>
-	<button (click)="qs.delete(question)">Delete</button>
+<div class="table-wrapp">
+    <table class="table">
+        <thead class="table-header">
+            <tr class="table-header__tr">
+                <th class="table__th">Name</th>
+                <th class="table__th">Category</th>
+                <th class="table__th">Date</th>
+                <th class="table__th">Action</th>
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            <tr class="table-body__tr" *ngFor="let question of qs.questions">
+                <td class="table__td">{{question.text}}</td>
+                <td class="table__td">{{question.category}}</td>
+                <td class="table__td">{{question.id|date}}</td>
+                <td class="table__td actions">
+                    <a routerLink="/edit/{{question.id}}">
+                        <span class="material-icons">edit</span>
+                    </a>
+                    <span (click)="qs.delete(question)" class="material-icons">delete</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
