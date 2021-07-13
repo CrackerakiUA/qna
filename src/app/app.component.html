@@ -1,4 +1,16 @@
-<a routerLink="/">Logo</a>
-<a routerLink="/create">Create</a>
-<a routerLink="/list">List</a>
-<router-outlet></router-outlet>
+<div class="wrapper">
+    <nav class="nav">
+        <div class="container nav__container">
+        	<a class="nav__logo" routerLink="/"><img src="assets/logo.svg" alt="Question Logo"></a>
+	        <ul class="nav__ul">
+	            <li class="nav__li"><a class="nav__a" routerLink="/create">Create</a></li>
+	            <li class="nav__li"><a class="nav__a" routerLink="/list">List</a></li>
+	        </ul>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

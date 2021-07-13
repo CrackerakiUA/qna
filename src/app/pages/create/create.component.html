@@ -1,20 +1,39 @@
-<form (ngSubmit)="qs.create(question)">
-	<input type="text" [(ngModel)]="question.text" name="text">
-	<label *ngFor="let category of categories">
-		<span>{{category|upper}}</span>
-		<input type="radio" [(ngModel)]="question.category" name="category" [value]="category">
-	</label>
-	<button [disabled]="!question.text || (question.category != 'open' &&  !question.answers.length)">Create Question</button>
+<!-- <div class="page">
+	<div class="page__header"></div>
+	<div class="page__body"></div>
+	<div class="page__header"></div>
+</div> -->
+
+<h2 class="title">Create Question</h2>
+<form class="create-form" (ngSubmit)="qs.create(question)">
+    <label class="forms">
+        <span class="forms__title">Question Name</span>
+        <input class="forms__input" type="text" name="text" placeholder="Your text" [(ngModel)]="question.text">
+    </label>
+    <div class="create-form__type">
+        <div class="radio-label">Question Type</div>
+        <div class="create-form__row">
+            <label class="radio" *ngFor="let category of categories">
+                <input type="radio" class="radio__input" [(ngModel)]="question.category" name="category" [value]="category">
+                <span class="radio__label"></span>
+                <div class="radio__text">{{category|upper}}</div>
+            </label>
+        </div>
+    </div>
+    <button class="btn-create btn _primary" [disabled]="!question.text || (question.category != 'open' &&  !question.answers.length)">Create Question</button>
 </form>
 
 <ng-container *ngIf="question.category != 'open'">
-	<h3>Answers</h3>
-	<div *ngFor="let answer of question.answers; index as i">
-		<span>{{answer}}</span>
-		<button (click)="question.answers.splice(i, 1);">Delete</button>
-	</div>
-	<form (ngSubmit)="question.answers.push(answer); answer='';">
-		<input type="text" [(ngModel)]="answer" name="answer">
-		<button [disabled]="!answer">Add Answer</button>
-	</form>
+    <h3>Answers</h3>
+    <div *ngFor="let answer of question.answers; index as i">
+        <span>{{answer}}</span>
+        <button (click)="question.answers.splice(i, 1);">Delete</button>
+    </div>
+    <form (ngSubmit)="question.answers.push(answer); answer='';">
+        <label class="forms">
+            <span class="forms__title">Answer Name</span>
+            <input class="forms__input" type="text" placeholder="Your text" [(ngModel)]="answer" name="answer">
+        </label>
+       <div class="text-center"> <button class="btn _primary" [disabled]="!answer">Add Answer</button></div>
+    </form>
 </ng-container>

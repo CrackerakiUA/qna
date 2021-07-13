@@ -1,0 +1,60 @@
+@import 'angular';
+:host {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	background-color: #fff;
+	margin-bottom: 70px;
+}
+.create-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include bp-max(md) {
+        flex-direction: column;
+    }
+    &__type {
+        .radio-label {
+            color: $c-basic;
+            font-size: calc(#{$fs} - 2px);
+            line-height: calc(#{$fs} - 2px);
+            letter-spacing: $letter-spacing;
+            margin-bottom: 5px;
+        }
+        .radio:not(:last-child) {
+            margin-right: 20px;
+        }
+		 @include bp-max(md) {
+           margin-top: 20px;
+        }
+    }
+    &__row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+.btn-create {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+	z-index: -1;
+    transform: translateX(-50%);
+}
+
+.title {
+    background-color: $c-sky;
+    color: $c-white;
+    border-radius: $b-radius;
+    padding: 5px 15px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+
+.text-center {
+    text-align: center;
+}
